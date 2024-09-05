@@ -20,12 +20,20 @@
             <button>create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
           </form> --}}
-          <form class="login-form">
-            <input type="email" placeholder="email"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
-          </form>
+        @if (session('failed'))
+            <div class="alert alert-danger">
+                {{ session('failed') }}
+            </div>
+        @endif
+        <form class="login-form" action="{{ route('user.store') }}" method="POST">
+            @csrf
+
+            <input name="email" type="email" placeholder="email">
+            <input name="password" type="password" placeholder="password">
+            <x-alerts.validation/>
+            <button type="submit">Login</button>
+        </form>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
         </div>
       </div>
 

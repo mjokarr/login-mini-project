@@ -24,6 +24,12 @@
         <span></span>
         <span></span>
       </div>
+      @if (session('success'))
+      <div class="alert alert-success">
+          {{ session('success') }}
+      </div>
+      @endif
+
       <br>
       <div id="nav-icon3">
         <span></span>
